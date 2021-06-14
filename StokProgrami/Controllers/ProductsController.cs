@@ -10,21 +10,18 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using StokProgrami.Models;
 
-
 namespace StokProgrami.Controllers
 {
     public class ProductsController : ApiController
     {
-        private StokKontrolProgramiEntities db = new StokKontrolProgramiEntities();
+        private StokKontrolProgramiEntities1 db = new StokKontrolProgramiEntities1();
 
         // GET: api/Products
-
-        [ResponseType(typeof(IEnumerable<Product>))]
-        [Route("api/Products")]
         public IQueryable<Product> GetProducts()
-        { 
+        {
             return db.Products;
         }
+
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
         public IHttpActionResult GetProduct(long id)
@@ -74,8 +71,6 @@ namespace StokProgrami.Controllers
         }
 
         // POST: api/Products
-
-     
         [ResponseType(typeof(Product))]
         public IHttpActionResult PostProduct(Product product)
         {

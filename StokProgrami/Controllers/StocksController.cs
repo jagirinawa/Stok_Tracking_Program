@@ -10,19 +10,19 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using StokProgrami.Models;
 
+
 namespace StokProgrami.Controllers
 {
     public class StocksController : ApiController
     {
-        private StokKontrolProgramiEntities db = new StokKontrolProgramiEntities();
+        private StokKontrolProgramiEntities1 db = new StokKontrolProgramiEntities1();
 
         // GET: api/Stocks
-        [ResponseType(typeof(IEnumerable<Stock>))]
-        [Route("api/Stocks")]
         public IQueryable<Stock> GetStocks()
         {
             return db.Stocks;
         }
+
         // GET: api/Stocks/5
         [ResponseType(typeof(Stock))]
         public IHttpActionResult GetStock(long id)

@@ -14,16 +14,10 @@ namespace StokProgrami.Models
     
     public partial class UnitType
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public UnitType()
-        {
-            this.ProductTypes = new HashSet<ProductType>();
-        }
-    
         public long id { get; set; }
         public string name { get; set; }
+        public long id_product_type { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ProductType> ProductTypes { get; set; }
+        public virtual ProductType ProductType { get; set; }
     }
 }

@@ -15,8 +15,8 @@ namespace StokProgrami.Models
     public partial class Stock
     {
         public long id { get; set; }
+        public long stock_amount { get; set; }
         public long id_product { get; set; }
-        public string stock_amount { get; set; }
     
         public virtual Product Product { get; set; }
     }

@@ -12,15 +12,12 @@ namespace StokProgrami.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    using System.Data.Entity.Core.Objects;
-    using System.Linq;
-
-    public partial class StokKontrolProgramiEntities : DbContext
+    
+    public partial class StokKontrolProgramiEntities1 : DbContext
     {
-        public StokKontrolProgramiEntities()
-            : base("name=StokKontrolProgramiEntities")
+        public StokKontrolProgramiEntities1()
+            : base("name=StokKontrolProgramiEntities1")
         {
-            this.Configuration.LazyLoadingEnabled = false;
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

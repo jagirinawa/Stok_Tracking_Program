@@ -10,12 +10,15 @@ using System.Windows.Forms;
 using System.Web.Http;
 using System.Net;
 using System.Data.SqlClient;
+using System.Net.Http.Headers;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace StokProgramiApp
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
         }
@@ -36,38 +39,28 @@ namespace StokProgramiApp
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
-
+            Password.PasswordChar = '*';
         }
-        private void button1_Click(object sender, EventArgs e)
+        private async void button1_ClickAsync(object sender, EventArgs e)
         {
-
-
-            SqlConnection con = new SqlConnection(@"Data Source=RIKU\RIKU;Initial Catalog=StokKontrolProgrami;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework"); // making connection   
-            SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from [User] where username = '" + textBox1.Text + "' and password='" + Password.Text + "'", con);
-            /* in above line the program is selecting the whole data from table and the matching it with the user name and password provided by user. */
-            DataTable dt = new DataTable(); //this is creating a virtual table  
+            
+            SqlConnection con = new SqlConnection(@"Data Source=RIKU\RIKU;Initial Catalog=StokKontrolProgrami;Integrated Security=True;MultipleActiveResultSets=True;Application Name=EntityFramework"); 
+            SqlDataAdapter sda = new SqlDataAdapter("Select COUNT(*) from [User] where username = '" + textBox1.Text + "' and password='" + Password.Text + "'", con); 
+            DataTable dt = new DataTable();  
             sda.Fill(dt);
             if (dt.Rows[0][0].ToString() == "0")
             {
                 MessageBox.Show("Invalid username or password");
-
-
             }
             else
             {
                 this.Hide();
-                new Form2().Show();
+                new Main_Menu().Show();
             }
-                /* I have made a new page called home page. If the user is successfully authenticated then the form will be moved to the next form */
-         
-
-
-
 
         }
 
-
-            private void textBox1_TextChanged_1(object sender, EventArgs e)
+        private void textBox1_TextChanged_1(object sender, EventArgs e)
         {
 
         }
@@ -86,7 +79,9 @@ namespace StokProgramiApp
         {
 
         }
-
+        // making connection   
+        /* in above line the program is selecting the whole data from table and the matching it with the user name and password provided by user. */
+        //this is creating a virtual table
         private void Passwor_Click(object sender, EventArgs e)
         {
 
@@ -97,10 +92,27 @@ namespace StokProgramiApp
             DialogResult select = MessageBox.Show("Are You Sure Want to Exit? ", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (select == DialogResult.No)
             {
-                
-                return ;
+
+                return;
             }
             Application.Exit();
         }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }
+                /* I have made a new page called home page. If the user is successfully authenticated then the form will be moved to the next form */
+         
+
+
+
+
+        
+
+
+       
+

@@ -17,6 +17,7 @@ namespace StokProgrami.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Product()
         {
+            this.ProductTypes = new HashSet<ProductType>();
             this.Stocks = new HashSet<Stock>();
         }
     
@@ -24,10 +25,12 @@ namespace StokProgrami.Models
         public string name { get; set; }
         public long id_product_type { get; set; }
         public string serial_no { get; set; }
+        public long product_stock { get; set; }
         public byte[] path { get; set; }
         public Nullable<System.DateTime> reg_date { get; set; }
     
-        public virtual ProductType ProductType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProductType> ProductTypes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stock> Stocks { get; set; }
     }
